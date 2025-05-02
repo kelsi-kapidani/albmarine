@@ -44,7 +44,7 @@ export function Trainings () {
         <div style={{color:'#003B6F',fontWeight:'bold'}}>
             <Row justify='center' style={{textAlign:'center', fontWeight:'bold', marginBottom:'20px', fontSize:'30px', marginTop:'20px'}}>Skipper Training Course</Row>
             <Row justify='space-around' align='middle' gutter={24} style={{marginBottom:'10px', padding: '0 20px'}}>
-                <Col span={12} xs={24}>
+                <Col span={12}>
                 <img
                     src='./stc.jpg'
                     style={{
@@ -56,7 +56,7 @@ export function Trainings () {
                         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
                     }}/>
                 </Col>
-                <Col  span={12} xs={24}><p>The goal of the skipper training is to enable the participants with an intensive practical revision of knowledge acquired formerly and so every 
+                <Col  span={12} ><p>The goal of the skipper training is to enable the participants with an intensive practical revision of knowledge acquired formerly and so every 
                     further self reliant sailing trip will take place organized, professional and without any worries.Theoretic courses and practical training will be 
                     carried out by sailing with professionals, a top class sailer and an educational theorist. Each participant will do exercises for all sailing positions 
                     and tasks on the sailing boat also as a helmsman where the tasks and positions will be exchanged systematically.The acquired knowledge will surely be worth 
