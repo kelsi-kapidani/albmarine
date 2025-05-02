@@ -8,17 +8,17 @@ import { Home } from './pages/Home';
 function App() {
 
   const url = useLocation().pathname;
-  if(url=='/') {
+  if(url==='/') {
     return (
   
-       <Row gutter={[0,40]} style={{
+       <Row gutter={[0.40]} style={{
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
         width: '100%',
         backgroundColor: '#fff'}}>
         <NavBar/>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1 ,  paddingTop: '69px'}}>
         <Home />
         </div>
         <FootNote/>
@@ -32,7 +32,7 @@ function App() {
       minHeight: '100vh',
       backgroundColor: '#fff'}}>
       <NavBar/>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1,   paddingTop: '69px' }}>
       <Outlet/>
       </div>
       <FootNote/>

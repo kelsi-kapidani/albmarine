@@ -41,6 +41,7 @@ export function NavBar() {
 
     const navigate = useNavigate()
     const screen = useBreakpoint();
+
     if (screen.xs) {
         return (
             <Row justify='space-between' align="middle" style={{ padding: '10px 20px', width: '100%' , backgroundColor:'#003B6F'}}>
@@ -53,8 +54,8 @@ export function NavBar() {
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Shipping Services</Menu.Item>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Maritime Training</Menu.Item>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/')}}>Captain's Area</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/')}}>About Us</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/')}}>Contact</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/about')}}>About Us</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/contact')}}>Contact</Menu.Item>
             </Menu>
             </Drawer>
             </Col>
@@ -62,18 +63,27 @@ export function NavBar() {
     )
     }
     return(
-        <div style={{ padding: '10px 20px', width: '100%' , backgroundColor:'#003B6F' , color:'#fff',boxSizing: 'border-box'}}>
+        <div style={{ 
+          padding: '10px 20px', 
+          width: '100%' , 
+          backgroundColor:'#003B6F' , 
+          color:'#fff',
+          boxSizing: 'border-box', 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: '1000'}}>
         <Row justify='space-between' align="middle" style={{marginBottom: '10px' }}>
           <Col >ALBMARINE</Col>
           <Col><GlobalOutlined style={{ fontSize: '20px'}}/></Col>
         </Row>
-        <Row justify='space-evenly' align="middle">
+        <Row justify='space-evenly' align="middle" style={{cursor:'pointer' }}>
             <Col>Home</Col>
-            <Col><Dropdown trigger='hover' overlay={menuss}  onClick={()=>{navigate('/')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigate('/')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
             <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigate('/')}}><Space>Maritime Traveling<DownOutlined /></Space></Dropdown></Col>
             <Col><Dropdown trigger='hover' overlay={menuca}  onClick={()=>{navigate('/')}}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
-            <Col onClick={()=>{navigate('/')}}>About Us</Col>
-            <Col onClick={()=>{navigate('/')}}>Contact</Col>
+            <Col onClick={()=>{navigate('/about')}}>About Us</Col>
+            <Col onClick={()=>{navigate('/contact')}}>Contact</Col>
         </Row>
         </div>
     )
