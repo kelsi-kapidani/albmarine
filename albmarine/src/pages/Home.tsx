@@ -1,5 +1,5 @@
 import { Card, Col, Row } from 'antd'
-import { services } from '../services'
+import { services } from '../db'
 import { useNavigate } from 'react-router'
 import '../index.css'
 
@@ -8,6 +8,11 @@ const { Meta } = Card;
 export function Home () {
     
     const navigate = useNavigate();
+
+    const scrollToService = (sectionId: number) => {
+      navigate('/shipping_services');
+      window.scrollTo({left: 0,top:sectionId*400});
+    };
 
     return (
         <div>
@@ -24,7 +29,7 @@ export function Home () {
         <Row gutter={[24,32]} style={{marginBottom:'50px',  padding: '0 20px'}} >
         {services.map(service=>(
              <Col lg={8} md={12} sm={12}>
-             <div onClick={() => navigate('/')}>
+             <div onClick={() => scrollToService(service.index)}>
                <Card
                  hoverable
                  style={{

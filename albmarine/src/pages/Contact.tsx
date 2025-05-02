@@ -15,6 +15,7 @@ export function Contact () {
         from_email: values.email,
         message: values.message,
       };
+      ///emailjs template data
       emailjs.send('service_6w5og6e', 'template_e37n3p4', templateParams, 'kZ5WkB9cWkrSbsnBT')
       .then(() => {
         message.success('Email sent successfully!');
@@ -42,8 +43,8 @@ export function Contact () {
             </Row>
             <Row justify='space-around'>
                 <Col>
-                <Row justify='end' style={{fontSize:'25px', marginBottom:'20px', width:'300px'}}>Send Us a Message</Row>
-                <Row justify="end">
+                <Row justify='center' style={{fontSize:'25px', marginBottom:'20px', width:'300px'}}>Send Us a Message</Row>
+                <Row justify="center">
                 <Form form={form} layout="vertical" onFinish={sendEmail}>
                     <Form.Item
                         label="Your Name"
@@ -72,11 +73,11 @@ export function Contact () {
                 </Row>
                 </Col> 
                 <Col>
-                <Row  justify='start' style={{fontSize:'25px', marginBottom:'10px'}}>Contact Info</Row>
-                <Row>You are welcome to get in touch with us if you have any questions.</Row>
-                <Row  style={{fontSize:'18px', marginTop:'20px'}}><PhoneFilled/>+355 68 2050835</Row>
-                <Row  style={{fontSize:'18px'}}><MailFilled/>albship@gmail.com</Row>
-                <Row  style={{fontSize:'18px'}}><EnvironmentFilled/>Lagjia Nr.3, Rruga Egnatia</Row>
+                <Row  justify='center' style={{fontSize:'25px', marginBottom:'10px'}}>Contact Info</Row>
+                <Row justify='center' style={{textAlign:'center'}}>You are welcome to get in touch with us if you have any questions.</Row>
+                <Row  justify='center'style={{fontSize:'18px', marginTop:'20px'}}><PhoneFilled/>+355 68 2050835</Row>
+                <Row justify='center' style={{fontSize:'18px'}}><MailFilled/>albship@gmail.com</Row>
+                <Row  justify='center'style={{fontSize:'18px'}}><EnvironmentFilled/>Lagjia Nr.3, Rruga Egnatia</Row>
                 </Col>
             </Row>
             </div>

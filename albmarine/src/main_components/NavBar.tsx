@@ -7,40 +7,47 @@ import '../index.css'
 
 const { useBreakpoint } = Grid;
 
-const menuss = (
-  <Menu>
-    <Menu.Item>Shipping Agency</Menu.Item>
-    <Menu.Item>Freight Forwarder</Menu.Item>
-    <Menu.Item>Cargo Surveyor</Menu.Item>
-    <Menu.Item>Tally Services</Menu.Item>
-    <Menu.Item>ISM Ship Management</Menu.Item>
-    <Menu.Item>ISPS Code</Menu.Item>
-  </Menu>
-)
- 
-const menumt = (
-  <Menu>
-    <Menu.Item>Skipper Training</Menu.Item>
-    <Menu.Item>STCW Training</Menu.Item>
-    
-  </Menu>
-)
-
-const menuca = (
-  <Menu>
-    <Menu.Item>MarineTraffic</Menu.Item>
-    <Menu.Item>MET Office</Menu.Item>
-    <Menu.Item>Sea Distance</Menu.Item>
-   
-  </Menu>
-)
 
 export function NavBar() {
 
     const [open, setOpen] = useState(false);
+    const [nestedOpen, setNestedOpen] = useState(false);
 
     const navigate = useNavigate()
     const screen = useBreakpoint();
+
+    const scrollToService = (sectionId: number) => {
+      navigate('/shipping_services');
+      window.scrollTo(0,sectionId*400 );
+    };
+    
+    const menuss = (
+      <Menu>
+        <Menu.Item onClick={() => scrollToService(0)}>Shipping Agency</Menu.Item>
+        <Menu.Item onClick={() => scrollToService(1)}>Freight Forwarder</Menu.Item>
+        <Menu.Item onClick={() => scrollToService(2)}>Cargo Surveyor</Menu.Item>
+        <Menu.Item onClick={() => scrollToService(3)}>ISM Ship Management</Menu.Item>
+        <Menu.Item onClick={() => scrollToService(4)}>ISPS Code</Menu.Item>
+        <Menu.Item onClick={() => scrollToService(5)}>Tally Services</Menu.Item>
+      </Menu>
+    )
+     
+    const menumt = (
+      <Menu>
+        <Menu.Item onClick={() => navigate('/maritime_training')}>Skipper Training</Menu.Item>
+        <Menu.Item onClick={() => navigate('/maritime_training')}>STCW Training</Menu.Item>
+        
+      </Menu>
+    )
+    
+    const menuca = (
+      <Menu>
+        <Menu.Item onClick={()=> window.open('https://www.marinetraffic.com/en/ais/home/centerx:-12.0/centery:25.0/zoom:4')}>MarineTraffic</Menu.Item>
+        <Menu.Item onClick={()=> window.open('https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/shipping-forecast')}>MET Office</Menu.Item>
+        <Menu.Item onClick={()=> window.open('https://sea-distances.org/')}>Sea Distance</Menu.Item>
+       
+      </Menu>
+    )
 
     if (screen.xs) {
         return (
@@ -51,11 +58,25 @@ export function NavBar() {
             <Drawer width='200' style={{backgroundColor:'#003B6F'}} maskClosable={true}  closable={false} onClose={()=>setOpen(false)} open={open}>
             <Menu className="custom-menu" style={{backgroundColor:'#003B6F'}}>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Home</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Shipping Services</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Maritime Training</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/')}}>Captain's Area</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/shipping_services')}}>Shipping Services</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/maritime_training')}}>Maritime Training</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setNestedOpen(true)}}>Captain's Area</Menu.Item>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/about')}}>About Us</Menu.Item>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/contact')}}>Contact</Menu.Item>
+            </Menu>
+            </Drawer>
+            <Drawer
+              title="Captain's Area"
+              width='200'
+              placement="right"
+              closable
+              onClose={() => setNestedOpen(false)}
+              open={nestedOpen}
+              style={{ position: 'fixed', backgroundColor:'#003B6F', color:'#fff' }}>
+            <Menu style={{backgroundColor:'#003B6F', color:'#fff'}}>
+              <Menu.Item style={{backgroundColor:'#003B6F', color:'#fff'}}onClick={()=> window.open('https://www.marinetraffic.com/en/ais/home/centerx:-12.0/centery:25.0/zoom:4')}>MarineTraffic</Menu.Item>
+              <Menu.Item style={{backgroundColor:'#003B6F', color:'#fff'}}onClick={()=> window.open('https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/shipping-forecast')}>MET Office</Menu.Item>
+              <Menu.Item style={{backgroundColor:'#003B6F', color:'#fff'}}onClick={()=> window.open('https://sea-distances.org/')}>Sea Distance</Menu.Item>
             </Menu>
             </Drawer>
             </Col>
@@ -78,10 +99,10 @@ export function NavBar() {
           <Col><GlobalOutlined style={{ fontSize: '20px'}}/></Col>
         </Row>
         <Row justify='space-evenly' align="middle" style={{cursor:'pointer' }}>
-            <Col>Home</Col>
-            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigate('/')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
-            <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigate('/')}}><Space>Maritime Traveling<DownOutlined /></Space></Dropdown></Col>
-            <Col><Dropdown trigger='hover' overlay={menuca}  onClick={()=>{navigate('/')}}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
+            <Col onClick={()=>{navigate('/')}}>Home</Col>
+            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigate('shipping_services')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigate('/maritime_training')}}><Space>Maritime Training<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger='hover' overlay={menuca}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
             <Col onClick={()=>{navigate('/about')}}>About Us</Col>
             <Col onClick={()=>{navigate('/contact')}}>Contact</Col>
         </Row>
