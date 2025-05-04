@@ -1,10 +1,27 @@
 import { Col, Row } from "antd";
 import { services } from "../db";
 import { Grid } from 'antd';
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 const { useBreakpoint } = Grid;
 
 export function Services () {
+
+    const location = useLocation();
+    const sectionId = location.state?.sectionId;
+  
+    useEffect(() => {
+      window.scrollTo(0,0);
+      if (sectionId !== undefined) {
+        const scrollY = [0, 400, 800, 1200, 1550, 1550][sectionId] || 0;
+  
+        const timeout = setTimeout(() => {
+          window.scrollTo({ top: scrollY, behavior: 'smooth' });
+        }, 200);
+        return () => clearTimeout(timeout);
+      }
+    }, [sectionId]);
 
     const screen= useBreakpoint();
     

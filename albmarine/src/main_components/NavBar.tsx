@@ -15,11 +15,16 @@ export function NavBar() {
 
     const navigate = useNavigate()
     const screen = useBreakpoint();
+    
+    const navigateNewPage = (address: string) => {
+      navigate(address);
+      window.scrollTo(0,0);
 
+    }
     const scrollToService = (sectionId: number) => {
-      navigate('/shipping_services');
-      window.scrollTo(0,sectionId*400 );
+      navigate('/shipping_services', { state: { sectionId } });
     };
+    
     
     const menuss = (
       <Menu>
@@ -34,8 +39,8 @@ export function NavBar() {
      
     const menumt = (
       <Menu>
-        <Menu.Item onClick={() => navigate('/maritime_training')}>Skipper Training</Menu.Item>
-        <Menu.Item onClick={() => navigate('/maritime_training')}>STCW Training</Menu.Item>
+        <Menu.Item onClick={() => navigateNewPage('/maritime_training')}>Skipper Training</Menu.Item>
+        <Menu.Item onClick={() => navigateNewPage('/maritime_training')}>STCW Training</Menu.Item>
         
       </Menu>
     )
@@ -51,18 +56,24 @@ export function NavBar() {
 
     if (screen.xs) {
         return (
+          <div style={{boxSizing: 'border-box', 
+          position: 'fixed',
+          top: 0,
+          width: '100%',
+          left: 0,
+          zIndex: '1000'}}>
             <Row justify='space-between' align="middle" style={{ padding: '10px 20px', width: '100%' , backgroundColor:'#003B6F'}}>
-            <Col className="custom-col-text" style={{fontSize: '30px' , marginLeft: '5px', cursor:'pointer' , color:'#fff' , fontWeight:'bold'}} onClick={()=>navigate('/home')}>ALBMARINE</Col>
+            <Col className="custom-col-text" style={{fontSize: '30px' , marginLeft: '5px', cursor:'pointer' , color:'#fff' , fontWeight:'bold'}} onClick={()=>navigate('/')}>ALBMARINE</Col>
             <Col className="custom-col-icon">
             <MenuOutlined style={{fontSize:'25px' , color:'#fff'}} onClick={()=>setOpen(true)}/>
             <Drawer width='200' style={{backgroundColor:'#003B6F'}} maskClosable={true}  closable={false} onClose={()=>setOpen(false)} open={open}>
             <Menu className="custom-menu" style={{backgroundColor:'#003B6F'}}>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/')}}>Home</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/shipping_services')}}>Shipping Services</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigate('/maritime_training')}}>Maritime Training</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigateNewPage('/')}}>Home</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigateNewPage('/shipping_services')}}>Shipping Services</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=> {setOpen(false);navigateNewPage('/maritime_training')}}>Maritime Training</Menu.Item>
                 <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setNestedOpen(true)}}>Captain's Area</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/about')}}>About Us</Menu.Item>
-                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigate('/contact')}}>Contact</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigateNewPage('/about')}}>About Us</Menu.Item>
+                <Menu.Item style={{color:'#FFFFFF'}} onClick={()=>{setOpen(false);navigateNewPage('/contact')}}>Contact</Menu.Item>
             </Menu>
             </Drawer>
             <Drawer
@@ -81,6 +92,7 @@ export function NavBar() {
             </Drawer>
             </Col>
             </Row>
+            </div>
     )
     }
     return(
@@ -100,11 +112,11 @@ export function NavBar() {
         </Row>
         <Row justify='space-evenly' align="middle" style={{cursor:'pointer' }}>
             <Col onClick={()=>{navigate('/')}}>Home</Col>
-            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigate('shipping_services')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
-            <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigate('/maritime_training')}}><Space>Maritime Training<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigateNewPage('shipping_services')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigateNewPage('/maritime_training')}}><Space>Maritime Training<DownOutlined /></Space></Dropdown></Col>
             <Col><Dropdown trigger='hover' overlay={menuca}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
-            <Col onClick={()=>{navigate('/about')}}>About Us</Col>
-            <Col onClick={()=>{navigate('/contact')}}>Contact</Col>
+            <Col onClick={()=>{navigateNewPage('/about')}}>About Us</Col>
+            <Col onClick={()=>{navigateNewPage('/contact')}}>Contact</Col>
         </Row>
         </div>
     )

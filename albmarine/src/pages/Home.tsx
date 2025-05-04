@@ -10,8 +10,7 @@ export function Home () {
     const navigate = useNavigate();
 
     const scrollToService = (sectionId: number) => {
-      navigate('/shipping_services');
-      window.scrollTo({left: 0,top:sectionId*400});
+      navigate('/shipping_services', { state: { sectionId } });
     };
 
     return (
