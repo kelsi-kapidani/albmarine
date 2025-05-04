@@ -112,9 +112,9 @@ export function NavBar() {
         </Row>
         <Row justify='space-evenly' align="middle" style={{cursor:'pointer' }}>
             <Col onClick={()=>{navigate('/')}}>Home</Col>
-            <Col><Dropdown trigger={'hover'} overlay={menuss}  onClick={()=>{navigateNewPage('shipping_services')}}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
-            <Col><Dropdown trigger='hover' overlay={menumt}  onClick={()=>{navigateNewPage('/maritime_training')}}><Space>Maritime Training<DownOutlined /></Space></Dropdown></Col>
-            <Col><Dropdown trigger='hover' overlay={menuca}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
+            <Col onClick={()=>{navigateNewPage('shipping_services')}}><Dropdown trigger={['hover']} overlay={menuss}><Space>Shipping Services<DownOutlined /></Space></Dropdown></Col>
+            <Col onClick={()=>{navigateNewPage('/maritime_training')}}><Dropdown trigger={['hover']} overlay={menumt}><Space>Maritime Training<DownOutlined /></Space></Dropdown></Col>
+            <Col><Dropdown trigger={['hover']} overlay={menuca}><Space>Captain's Area<DownOutlined /></Space></Dropdown></Col>
             <Col onClick={()=>{navigateNewPage('/about')}}>About Us</Col>
             <Col onClick={()=>{navigateNewPage('/contact')}}>Contact</Col>
         </Row>
