@@ -12,7 +12,7 @@ function App() {
 
   if(url==='/') {
     return (
-       <Row gutter={[0.40]} style={{
+       <Row gutter={40} style={{
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
