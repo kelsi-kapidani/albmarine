@@ -10,30 +10,57 @@ import { Trainings } from './pages/Trainings';
 
 
 const router = createBrowserRouter([
-  {
+  
+//   {
+//   path: '/',
+//   element: <App />,
+//   children: [
+//     {
+//     path:'/about',
+//     element: <About />
+//     },
+//     {
+//     path:'/shipping_services',
+//     element: <Services />,
+//     },
+//     {
+//     path:'/maritime_training',
+//     element: <Trainings />,
+//     },
+//     {
+//     path:'/contact',
+//     element: <Contact />
+//     }
+//   ]
+// }
+// ]);
+{
   path: '/',
   element: <App />,
   children: [
     {
-    path:'/about',
-    element: <About />
+      path: 'about',
+      element: <About />,
     },
     {
-    path:'/shipping_services',
-    element: <Services />,
+      path: 'shipping_services',
+      element: <Services />,
     },
     {
-    path:'/maritime_training',
-    element: <Trainings />,
+      path: 'maritime_training',
+      element: <Trainings />,
     },
     {
-    path:'/contact',
-    element: <Contact />
-    }
-  ]
+      path: 'contact',
+      element: <Contact />,
+    },
+  ],
+},
+],
+{
+basename: '/albmarine', // ✅ This fixes GitHub Pages 404
 }
-]);
-
+);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
