@@ -1,12 +1,13 @@
 {
-  "homepage":"https://kelsi-kapidani.github.io/albmarine/",
+  "homepage": "https://kelsi-kapidani.github.io/albmarine/",
   "name": "albmarine",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predeploy":"npm run build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
