@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="180 380 1690 1340"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">ALBMARINE logo</title>
+  <desc id="desc">Red and blue ALBMARINE emblem without the surrounding circles.</desc>
+
+  <!-- Left blue section -->
+  <path fill="#003399"
+        d="M 517 414.5
+           L 742.5 643
+           L 436 1522.5
+           C 360 1454, 274 1348, 217.5 1236
+           Z"/>
+
+  <!-- Right blue section -->
+  <path fill="#003399"
+        d="M 1533 416.5
+           L 1829.5 1229
+           C 1790 1311, 1710 1422, 1614 1517.5
+           L 1307.5 642
+           Z"/>
+
+  <!-- Central red section -->
+  <path fill="#FE0002"
+        d="M 846 445.5
+           L 1029 627.5
+           L 1207.5 453
+           L 1599.5 1528
+           C 1527 1590, 1413 1653, 1317.5 1688
+           L 1025 885.5
+           L 731.5 1692
+           C 627 1655, 528 1598, 449.5 1534
+           Z"/>
+
+  <!-- Central blue diamond -->
+  <path fill="#003399"
+        d="M 1024 958.5
+           L 1124.5 1227
+           L 1028 1325.5
+           L 926.5 1226
+           Z"/>
+</svg>
