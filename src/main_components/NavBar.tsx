@@ -63,7 +63,7 @@ export function NavBar() {
           left: 0,
           zIndex: '1000'}}>
             <Row justify='space-between' align="middle" style={{ padding: '10px 20px', width: '100%' , backgroundColor:'#003B6F'}}>
-            <Col className="custom-col-text" style={{fontSize: '30px' , marginLeft: '5px', cursor:'pointer' , color:'#fff' , fontWeight:'bold'}} onClick={()=>navigate('/')}>ALBMARINE</Col>
+            <Col className="custom-col-text" style={{fontSize: '30px' , marginLeft: '5px', cursor:'pointer' , color:'#fff' , fontWeight:'bold'}} onClick={()=>navigate('/')}>ALBMARINE SHIPPING</Col>
             <Col className="custom-col-icon">
             <MenuOutlined style={{fontSize:'25px' , color:'#fff'}} onClick={()=>setOpen(true)}/>
             <Drawer width='200' style={{backgroundColor:'#003B6F'}} maskClosable={true}  closable={false} onClose={()=>setOpen(false)} open={open}>
